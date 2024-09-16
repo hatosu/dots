@@ -39,6 +39,11 @@ set_network 0 psk "mypassword"
 set_network 0 key_mgmt WPA-PSK
 enable_network 0
 quit
+echo 'OR!!!'
+nmcli r w on
+nmcli d w l
+nmcli d w c SomeWifiName password "SomePassword"
+
 
 #gentoo wifi
 1# create the file with vi or nano /etc/wpa_supplicant/wpa_supplicant-(your network device).conf
