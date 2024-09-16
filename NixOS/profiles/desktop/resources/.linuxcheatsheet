@@ -1,0 +1,29 @@
+#piping output of cat to tgpt
+cat ~/Diy/cleanse.sh | phind "what does this script do" 
+
+#how to use git
+sudo pacman -S openssh git
+ssh-keygen -t ed25519 -C <insert email here>
+echo "HATOSU says, enter blank for all prompts"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+echo "HATOSU says, copy the contents of the ENTIRE pub file"
+echo "HATOSU says, then go to your github settings and add the copied contents and put it into the ssh key field and add key"
+sudo mkdir <foldler that contents of repo will be in>
+sudo chmod a+rwx <folder you created>
+sudo chmod a+rwx <your entire github folder too>
+cd <folder you created>
+git init
+git config --global user.name <insert-username-here>
+git config --global user.email <insert-email-here>
+git config --global --add safe.directory <folder you created>
+git remote add <choose custom name> https://github.com/hatosu/dots.git
+git remote set-url dots https://<insert-username-here>:<insert-user-token-here>@github.com/hatosu/dots.git
+git fetch <custom name you chose>
+git switch main
+vim file.txt
+git add .
+git add -A
+git commit -am "testing to see if git works :3"
+git push <custom name you chose>
