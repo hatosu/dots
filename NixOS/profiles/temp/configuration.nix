@@ -7,7 +7,7 @@
       ./hardware-configuration.nix
     ];
 
-  #choose custom linux kernel
+  #choose linux kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   #setup bootloader
