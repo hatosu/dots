@@ -53,6 +53,14 @@
             inputs.impermanence.nixosModules.impermanence
           ];
         };
+        temp = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [
+            ./profiles/temp/configuration.nix
+            inputs.disko.nixosModules.default
+            (import ./profiles/temp/disko.nix { device = "/dev/nvme0n1"; })
+          ];
+        };
       };
 
     };
