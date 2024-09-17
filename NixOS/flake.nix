@@ -12,11 +12,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #input for disko
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #input for impermanence
     impermanence = {
       url = "github:nix-community/impermanence";
     };
