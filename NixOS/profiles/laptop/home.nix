@@ -4,16 +4,15 @@
 
   imports = 
     [
-      ./modules/hodules/theming.nix
-      ./modules/hodules/river.nix
-      ./modules/hodules/kitty.nix
-      ./modules/hodules/zshell.nix
-      ./modules/hodules/mediaplayerv.nix
+      ./modules/hodules/fastfetch.nix
       ./modules/hodules/homelinks.nix
+      ./modules/hodules/neovim.nix
+      ./modules/hodules/terminal.nix
       ./modules/hodules/waybar.nix
       ./modules/hodules/firefox.nix
-      ./modules/hodules/neovim.nix
-      ./modules/hodules/fastfetch.nix
+      ./modules/hodules/mediaplayerv.nix
+      ./modules/hodules/other.nix
+      ./modules/hodules/theming.nix
     ];
 
   home.username = "hatosu";

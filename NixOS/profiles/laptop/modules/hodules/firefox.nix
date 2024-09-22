@@ -7,14 +7,14 @@
     profiles.hatosu = {
       userChrome = ''
         #navigator-toolbox {
-          background-color: #101010 !important;
+          background-color: #1c1c1b !important;
         }
-        :root { --toolbar-bgcolor: #101010 !important; }
+        :root { --toolbar-bgcolor: #1c1c1b !important; }
       '';
       userContent = ''
         @-moz-document url-prefix("about:home"), url-prefix("about:newtab") {
           :root {
-            --newtab-background-color: #101010 !important;
+            --newtab-background-color: #1c1c1b !important;
           }
         }
       '';

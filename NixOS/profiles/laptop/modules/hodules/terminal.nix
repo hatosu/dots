@@ -1,5 +1,12 @@
 { config, pkgs, ... }: {
 
+  #setup kitty as terminal emulator
+  programs.kitty = {
+    enable = true;
+    package = pkgs.kitty;
+    themeFile = "Pnevma";
+  };
+
   programs.zsh = {
 
     #enable zsh and some default plugins
@@ -35,7 +42,7 @@
     oh-my-zsh = {
       enable = true;
       package = pkgs.oh-my-zsh;
-      theme = "darkblood";
+      theme = "avit";
       plugins = [
         "git"
       ];

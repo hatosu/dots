@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: {
 
-  #activation script on rebuild (IT RUNS FROM ROOT, BEWARE)
+  #activation script on rebuild
   system.activationScripts.rebuild.text = ''
 
     #creates a blank config file to get rid of neovide error message

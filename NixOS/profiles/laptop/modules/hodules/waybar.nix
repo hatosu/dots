@@ -10,10 +10,10 @@
         position = "bottom";
         margin = "5px";
         height = 32;
-        output = [ "eDP-1" ];
-        modules-left = [ "workspaces" "user" ];
+        output = [ "eDP-2" ];
+        modules-left = [ "user" "battery" ];
         modules-center = [ "privacy" "wlr/taskbar" "tray" ];
-        modules-right = [ "cpu" "temperature" "memory" "disk" "language" "clock" "battery" ];
+        modules-right = [ "cpu" "temperature" "memory" "disk" "language" "clock" ];
       };
     };
     style = ''
@@ -45,6 +45,7 @@
       #memory,
       #disk,
       #cpu,
+      #battery,
       #language,
       #workspaces button {
           box-shadow: none;

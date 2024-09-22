@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
+
   imports = 
     [
       ./hardware-configuration.nix
@@ -14,13 +15,15 @@
       ./modules/codules/secure.nix
       ./modules/codules/variable.nix
       ./modules/codules/virtualization.nix
+      ./scripts/init.nix
+      ./scripts/find.nix
       ./scripts/rebuild.nix
       ./scripts/startup.nix
-      ./scripts/functions.nix
-      ./scripts/alias.nix
+      ./scripts/help.nix
       ./scripts/impermanence.nix
       inputs.home-manager.nixosModules.default
     ];
+
   home-manager = {
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs; };
@@ -31,4 +34,5 @@
 
   # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration
   system.stateVersion = "24.05"; # Did you read the comment?
+
 }

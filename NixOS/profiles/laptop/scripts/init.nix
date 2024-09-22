@@ -1,20 +1,45 @@
 { lib, ... }: {
 
-  #functions that are too long to be kept as aliases
-  environment = {
-    interactiveShellInit = ''
+  environment={
+    interactiveShellInit=''
 
+      alias power="shutdown -h now"
+      alias hist="history | grep"
+      alias vcheat="nvim /etc/nixos/profiles/laptop/resources/information/vim.txt"
+      alias lcheat="nvim /etc/nixos/profiles/laptop/resources/information/linux.txt"
+      alias features="nvim /etc/nixos/profiles/laptop/resources/information/features.txt"
+      alias c="clear"
+      alias e="exit"
+      alias s="playerctl next"
+      alias p="playerctl play-pause"
+      alias b="playerctl previous"
+      alias try="nix-shell -p"
+      alias opt="image_optim"
+      alias img="magick"
+      alias ff="fastfetch --logo-color-1 red --logo-color-2 '90:'"
+      alias anime="ani-cli -q 1080p"
+      alias ask="tgpt"
+      alias phind="tgpt --provider phind"
+      alias color="okolors"
+      alias disk="ncdu"
+      alias audio="ponymix"
+      alias tasks="glances"
+      alias drag="ripdrag -r"
+      alias v="nvim"
+      alias y="yazi"
+      alias m="mpv"
+  
       rebuild() {
         clear
-        nix-channel --update unstable
+        sudo nix flake update /etc/nixos
         sudo nixos-rebuild boot --flake /etc/nixos#laptop
-        sudo nixos-rebuild switch --flake /etc/nixos#laptop
+        sudo nixos-rebuild switch --upgrade --flake /etc/nixos#laptop
         noti -t 'NIXOS REBUILD COMMAND' -m 'system successfully updated according to your personal nix configuration files >:3'
       }
 
       heal() {
         sudo nix-collect-garbage
-        sudo rm -rf ~/.cache/nix/*
+        sudo rm -rf ~/.cache/*
         noti -t "HEAL COMMAND" -m "Successfully cleared cache & app garbage, and executed a few system health commands."
       }
 
