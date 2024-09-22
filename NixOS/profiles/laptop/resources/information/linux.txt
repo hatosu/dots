@@ -48,6 +48,7 @@ nmcli d w c SomeWifiName password "SomePassword"
 dd if=/dev/zero of=/dev/sda bs=1M status=progress
 
 #force wipe all data (makes sure that the data cannot be recovered)
+#(0 for one pass only which is usually enough, 1 for two passes, 5 for six passes which is hardcore but will 100% make sure no data is recovered)
 shred -vfzn 5 /dev/sda
 
 #gentoo wifi
