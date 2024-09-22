@@ -48,7 +48,7 @@ nmcli d w c SomeWifiName password "SomePassword"
 dd if=/dev/zero of=/dev/sda bs=1M status=progress
 
 #force wipe all data (makes sure that the data cannot be recovered)
-shred -vfzn 5 [/file/system/path]
+shred -vfzn 5 /dev/sda
 
 #gentoo wifi
 1# create the file with vi or nano /etc/wpa_supplicant/wpa_supplicant-(your network device).conf
