@@ -1,60 +1,51 @@
 { pkgs, lib, config, ... }: {
 
   #sound drivers
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  #gpu drivers
-  services.xserver.videoDrivers = ["nvidia"];
-  boot.kernelModules = [ "nvidia_uvm" "nvidia_modeset" "nvidia_drm" "nvidia" ];
-  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
-  hardware = {
-    graphics = {
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    wireplumber = {
       enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      dynamicBoost.enable = false;
-      open = false;
-      nvidiaPersistenced = true;
-      nvidiaSettings = true;
-    };
-  };
-
-  #enable xdg & screensharing drivers
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland = {
-        enable = true;
+      extraConfig = {
+        "10-disable-camera" = {
+          "wireplumber.profiles" = {
+            main."monitor.libcamera" = "disabled";
+          };
+        };
       };
-      portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
   };
+
+  #enable xdg/dbus & screensharing drivers
+  services.dbus.enable = true;
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
+    wlr.enable = true;
     xdgOpenUsePortal = false;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
+  };
+
+  #enable polkit drivers
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
   };
 
 }

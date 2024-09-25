@@ -17,44 +17,39 @@
       };
       modules = [
         {
-          type = "title";
-          format = "{6}";
-          key = "╭────";
-        }
-        {
           type = "os";
           format = "{2} {9}";
-          key = "├──";
+          key = "╭────";
         }
         {
           type = "kernel";
           format = "{1} {2}";
-          key = "│ ";
+          key = "│ ";
+        }
+        {
+          type = "packages";
+          key = "│ ";
         }
         {
           type = "wm";
-          key = "│󰨇 ";
+          key = "│ ";
         }
         {
-          type = "shell";
-          key = "│ ";
-        }
-        {
-          type = "host";
-          format = "{1}";
-          key = "├──";
+          type = "terminal";
+          key = "│ ";
         }
         {
           type = "cpu";
           key = "│ ";
         }
         {
-          type = "gpu";
-          key = "│󱒄 ";
+          type = "command";
+          text = "printf 'NVIDIA GeForce RTX 4060 Max-Q / Mobile [Discrete]'";
+          key = "│ ";
         }
         {
-          type = "memory";
-          key = "│ ";
+          type = "disk";
+          key = "│ ";
         }
         {
           type = "command";

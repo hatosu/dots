@@ -9,23 +9,24 @@
     vimdiffAlias = true;
     package = pkgs.neovim-unwrapped;
     plugins = with pkgs.vimPlugins; [
-       syntastic
-       vim-nix
-       vim-fugitive
-       vim-airline
-       vim-airline-themes
-       vim-polyglot
-       vim-suda
-       indentLine
-       nerdcommenter
-       vim-surround
-       supertab
-       undotree
-       gv-vim
-       vim-nerdtree-tabs
-       skim
+      awesome-vim-colorschemes
+      syntastic
+      vim-nix
+      vim-fugitive
+      vim-airline
+      vim-airline-themes
+      vim-polyglot
+      vim-suda
+      indentLine
+      nerdcommenter
+      vim-surround
+      supertab
+      undotree
+      gv-vim
+      vim-nerdtree-tabs
     ];
     extraConfig = ''
+      colorscheme sierra
       autocmd VimEnter * AirlineTheme minimalist
       autocmd FileType apache setlocal commentstring=#\ %s
       set nu

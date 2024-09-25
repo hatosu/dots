@@ -3,7 +3,6 @@
   #enables steam & allows you to use gamescope launch option
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
   };
 
   #allows you to use gamemode launch option in steam

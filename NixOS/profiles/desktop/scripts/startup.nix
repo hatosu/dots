@@ -1,6 +1,6 @@
 { pkgs, lib, ... }: {
 
-  #activation script on computer startup (RUNS FROM ROOT)
+  #activation script on computer startup
   systemd.services.startup = {
     enable = true;
     wantedBy = ["default.target" "multi-user.target" ];

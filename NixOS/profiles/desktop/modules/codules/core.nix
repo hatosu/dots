@@ -17,6 +17,7 @@
     home = "/home/hatosu";
     description = "guh... mlem -hatosu";
     extraGroups = [ "wheel" "libvirtd" "kvm" ];
+    initialPassword = ";";
   };
 
   #properly set default locale
@@ -35,19 +36,14 @@
   #setup firewall
   networking.firewall.enable = true;
 
-  #enable polkit
-  security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-
   #set zsh as default shell
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   #enable ly as login manager (and let it be able to detect hyprland)
   services.displayManager.ly.enable = true;
-  programs.hyprland.enable = true;
 
-  #fuse stuff
+  #fuse (gives user more control for root mounting or smth)
   programs.fuse.userAllowOther = true;
 
 }
