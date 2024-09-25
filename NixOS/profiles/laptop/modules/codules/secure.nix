@@ -1,6 +1,6 @@
 { lib, ... }: {
 
-  #setup openssh
+  #configure openssh
   services.openssh.enable = true;
 
 }
