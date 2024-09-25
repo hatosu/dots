@@ -61,8 +61,9 @@
         sudo cp -r /etc/nixos/misc ~/Github/dots/NixOS/
         git add .
         git add -A
-        git commit -am "erm- guh.... mlem"
+        git commit -am "visit hatosu.com >x3"
         git push dots
+        cd
       }
 
       run() {
