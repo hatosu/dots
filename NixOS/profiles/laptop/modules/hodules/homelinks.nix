@@ -11,8 +11,9 @@
   xdg = {
     enable = true;
 
-    configFile."LMAO/init.cum" = {
-      source = ../../resources/temp/init.cum;
+    #vesktop symlink
+    configFile."vesktop/settings/settings.json" = {
+      source = ../../resources/vesktop/settings.json;
     };
 
   };

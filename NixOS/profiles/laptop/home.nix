@@ -6,9 +6,9 @@
     [
       ./modules/hodules/fastfetch.nix
       ./modules/hodules/homelinks.nix
+      ./modules/hodules/waybar.nix
       ./modules/hodules/neovim.nix
       ./modules/hodules/terminal.nix
-      ./modules/hodules/waybar.nix
       ./modules/hodules/firefox.nix
       ./modules/hodules/mediaplayerv.nix
       ./modules/hodules/other.nix

@@ -5,6 +5,7 @@
   imports = 
     [
       ./hardware-configuration.nix
+      ./modules/codules/laptop.nix
       ./modules/codules/core.nix
       ./modules/codules/driver.nix
       ./modules/codules/font.nix

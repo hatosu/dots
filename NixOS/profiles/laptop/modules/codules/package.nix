@@ -8,13 +8,17 @@
       xdg-utils
       wl-clipboard
       dunst
+      fuzzel
       adwaita-icon-theme
       papirus-icon-theme
   
       #cli tools
+      tmux
       htop
+      todo-txt-cli
       brightnessctl
       git
+      bat
       ponymix
       navi
       tgpt
@@ -56,6 +60,7 @@
       davfs2
   
       #programs
+      zed-editor
       vesktop
       kdenlive
       krita
@@ -71,7 +76,7 @@
       virt-viewer
       spotify
       obs-studio
-      fuzzel
+      freecad
   
       #podman packages
       distrobox

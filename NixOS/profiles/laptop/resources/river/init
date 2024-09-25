@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 #autostart
+dbus-launch wlr-randr --output eDP-2 --on --mode 2880x1800@60.000999 --scale 1.75 &
 dbus-launch waybar &
-wlr-randr --output eDP-2 --on --mode 2880x1800@60.000999 --scale 1.75 &
 fcitx5 &
 dunst &
-swaybg -i /etc/nixos/profiles/laptop/resources/wallpapers/wallpaper1.jpg &
+dbus-launch swaybg -i /etc/nixos/profiles/laptop/resources/wallpapers/wallpaper1.jpg &
 
 #modkey
 mod="Mod4"
@@ -17,7 +17,7 @@ riverctl map normal $mod+Shift M spawn "playerctl next"
 riverctl map normal $mod L spawn kitty
 riverctl map normal $mod B spawn firefox
 riverctl map normal $mod O spawn "hyprpicker -a"
-riverctl map normal $mod C spawn "wlr-randr --output eDP-1 --on --mode 2880x1800@60.000999 --scale 1.00 && sleep 1 && dbus-launch flameshot gui && sleep 1 && wlr-randr --output eDP-1 --on --mode 2880x1800@60.000999 --scale 1.75"
+riverctl map normal $mod C spawn "dbus-launch wlr-randr --output eDP-2 --on --mode 2880x1800@60.000999 --scale 1.00 && sleep 1 && dbus-launch flameshot gui && sleep 1 && dbus-launch wlr-randr --output eDP-2 --on --mode 2880x1800@60.000999 --scale 1.75"
 riverctl map normal $mod V spawn "vesktop --enable-features=UseOzonePlatform --ozone-platform=x11 --enable-wayland-ime"
 riverctl map normal $mod Z close
 riverctl map normal $mod+Shift X exit

@@ -3,11 +3,11 @@
   #activation script on rebuild
   system.activationScripts.rebuild.text = ''
 
-    #creates a blank config file to get rid of neovide error message
-    #DIRECTORY="/home/hatosu/.config/neovide"
-    #if [[ ! -d "$DIRECTORY" ]]; then
-    #  mkdir "$DIRECTORY"
-    #fi
+    #creates blank folder to get rid of neovide error message
+    DIRECTORY="/home/hatosu/.config/neovide"
+    if [[ ! -d "$DIRECTORY" ]]; then
+      mkdir "$DIRECTORY"
+    fi
 
     #remind oneself of what has to be done manually
     echo 'do these yourself:'

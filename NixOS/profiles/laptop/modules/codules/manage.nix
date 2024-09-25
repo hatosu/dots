@@ -1,11 +1,17 @@
 { pkgs, lib, inputs, ... }: {
 
-  #enable licensed software, experimental features, and broken packages
-  nixpkgs.config.allowUnfree = true;
+  #enable experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowBroken = true;
 
-  #automatically clear temp nix files older than 7 days
+  #enable proprietary & broken packages
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+    };
+  };
+
+  #automatically clear nix garbage older than a week
   nix.gc = {
     automatic = true;
     dates = "weekly";

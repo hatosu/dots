@@ -13,7 +13,7 @@ let
                 echo "Usage: $0 <search_term>"
                 exit 1
             fi
-            nix search nixpkgs "$1" | less
+            nix search nixpkgs "$1" && clear && nix search nixpkgs "$1" | grep -A 1 "*" | less && clear
             ;;
         2)
             if [ "$#" -ne 1 ]; then

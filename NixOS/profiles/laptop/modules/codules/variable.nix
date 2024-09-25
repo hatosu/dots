@@ -21,6 +21,10 @@
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
     QT_QPA_PLATFORM = "wayland;xcb";
+
+    #allow all nix-commands to use unfree packages
+    NIXPKGS_ALLOW_UNFREE = "1";
+
   };
 
 }

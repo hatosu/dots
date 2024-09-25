@@ -5,9 +5,9 @@
 
       alias power="shutdown -h now"
       alias hist="history | grep"
-      alias vcheat="nvim /etc/nixos/profiles/laptop/resources/information/vim.txt"
-      alias lcheat="nvim /etc/nixos/profiles/laptop/resources/information/linux.txt"
-      alias features="nvim /etc/nixos/profiles/laptop/resources/information/features.txt"
+      alias vcheat="nvim /etc/nixos/misc/.vim"
+      alias lcheat="nvim /etc/nixos/misc/.linux"
+      alias features="nvim /etc/nixos/misc/.laptopfeatures"
       alias c="clear"
       alias e="exit"
       alias s="playerctl next"
@@ -17,12 +17,14 @@
       alias opt="image_optim"
       alias img="magick"
       alias ff="fastfetch --logo-color-1 red --logo-color-2 '90:'"
+      alias fastfetch="fastfetch --logo-color-1 red --logo-color-2 '90:'"
       alias anime="ani-cli -q 1080p"
+      alias light="brightnessctl"
       alias ask="tgpt"
       alias phind="tgpt --provider phind"
       alias color="okolors"
       alias disk="ncdu"
-      alias audio="ponymix"
+      alias sound="ponymix"
       alias tasks="glances"
       alias drag="ripdrag -r"
       alias v="nvim"
@@ -31,10 +33,14 @@
   
       rebuild() {
         clear
-        sudo nix flake update /etc/nixos
         sudo nixos-rebuild boot --flake /etc/nixos#laptop
-        sudo nixos-rebuild switch --upgrade --flake /etc/nixos#laptop
-        noti -t 'NIXOS REBUILD COMMAND' -m 'system successfully updated according to your personal nix configuration files >:3'
+        sudo nixos-rebuild switch --flake /etc/nixos#laptop
+        noti -t 'REBUILD COMMAND' -m 'system successfully rebuilt according to your personal nix configuration files >:3'
+      }
+
+      update() {
+        sudo nix flake update /etc/nixos
+        noti -t 'UPDATE COMMAND' -m 'system update completed successfully'
       }
 
       heal() {
@@ -43,12 +49,19 @@
         noti -t "HEAL COMMAND" -m "Successfully cleared cache & app garbage, and executed a few system health commands."
       }
 
-      pushdots() {
+      sync-laptop() {
         cd ~/Github/dots
-        git switch main
+        sudo git rm -r ~/Github/dots/*
+        sudo rm -r /tmp/dots
+        git clone https://github.com/hatosu/dots /tmp/dots
+        sudo cp -r /tmp/dots/* ~/Github/dots
+        sudo git rm -r ~/Github/dots/NixOS/profiles/laptop
+        sudo git rm -r ~/Github/dots/NixOS/misc
+        sudo cp -r /etc/nixos/profiles/laptop ~/Github/dots/NixOS/profiles/
+        sudo cp -r /etc/nixos/misc ~/Github/dots/NixOS/
         git add .
         git add -A
-        git commit -am "mlem..."
+        git commit -am "erm- guh.... mlem"
         git push dots
       }
 

@@ -21,64 +21,35 @@
     };
   };
 
-  #gpu drivers
-  services.power-profiles-daemon.enable = true;
-  systemd.services.power-profiles-daemon = {
-    enable = true;
-    wantedBy = [ "multi-user.target" ];
-  };
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-        amdvlk
-      ];
-      extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
-      ];
-    };
-    nvidia = {
-      powerManagement = {
-        enable = true;
-        finegrained = true;
-      };
-    };
-  };
-  systemd.tmpfiles.rules = 
-  let
-    rocmEnv = pkgs.symlinkJoin {
-      name = "rocm-combined";
-      paths = with pkgs.rocmPackages; [
-        rocblas
-        hipblas
-        clr
-      ];
-    };
-  in [
-    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  ];
-  environment.systemPackages = with pkgs; [ lact ];
-  systemd.packages = with pkgs; [ lact ];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
-
-  #enable xdg & screensharing drivers
+  #enable xdg/dbus & screensharing drivers
+  services.dbus.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;
     xdgOpenUsePortal = false;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config = {
-      common.default = "*";
-    };
   };
   programs.river = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  #enable polkit drivers
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
   };
 
 }

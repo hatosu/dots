@@ -6,11 +6,13 @@
     package = pkgs.waybar;
     settings = {
       mainBar = {
+        output = [
+          "eDP-2"
+        ];
         layer = "top";
         position = "bottom";
         margin = "5px";
         height = 32;
-        output = [ "eDP-2" ];
         modules-left = [ "user" "battery" ];
         modules-center = [ "privacy" "wlr/taskbar" "tray" ];
         modules-right = [ "cpu" "temperature" "memory" "disk" "language" "clock" ];
