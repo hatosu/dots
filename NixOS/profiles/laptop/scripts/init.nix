@@ -55,6 +55,8 @@
         sudo rm -r /tmp/dots
         git clone https://github.com/hatosu/dots /tmp/dots
         sudo cp -r /tmp/dots/* ~/Github/dots
+        sudo rm -r ~/Github/dots/NixOS/profiles/laptop
+        sudo rm -r ~/Github/dots/NixOS/misc
         sudo git rm -r ~/Github/dots/NixOS/profiles/laptop
         sudo git rm -r ~/Github/dots/NixOS/misc
         sudo cp -r /etc/nixos/profiles/laptop ~/Github/dots/NixOS/profiles/
