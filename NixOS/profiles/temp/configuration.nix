@@ -66,8 +66,12 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  #enable ly as login manager (and let it be able to detect hyprland)
-  services.displayManager.ly.enable = true;
+  #setup gnome and omit ly (FOR TEMP PROFILE ONLY)
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  }
 
   #fuse stuff
   programs.fuse.userAllowOther = true;
